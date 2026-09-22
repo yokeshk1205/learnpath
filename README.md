@@ -55,6 +55,13 @@ recommendable skill.
 
 Open `http://localhost:5173`. The web screen makes real liveness requests to both backend services.
 
+### VS Code quick start
+
+Open this repository in VS Code, choose **Terminal → Run Task**, and run
+**LearnPath: Run full stack**. The checked-in workspace task starts the local PostgreSQL data directory,
+the web/API development processes, and the Python ML service. This task targets the Windows development
+environment used for this project (PostgreSQL 18 and the local `.venv`).
+
 To regenerate the Phase 12 source data, Phase 13 features, and Phase 14 experiment:
 
 ```bash
