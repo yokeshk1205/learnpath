@@ -272,5 +272,7 @@ misconception evidence, decision-specific prerequisite verification, and evidenc
 
 ## Final readiness
 
+The [Paper 1 implementation audit](docs/paper-1-implementation-audit.md) maps every diagnostic capability to live code and separates implemented instrumentation from conclusions that still require a consented real-learner study.
+
 The strict content audit passes for 36/36 active skills across five courses and five demo learners. See
 `docs/final-completion-audit.md` for the final automated/browser verification record and documented limits.

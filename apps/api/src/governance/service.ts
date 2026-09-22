@@ -1,5 +1,7 @@
 import type { Pool } from "pg";
 
+import { describeDiagnosticItemCalibration } from "../diagnostics/calibration.js";
+import { diagnosticSelectionPolicyVersion } from "../diagnostics/selection.js";
 import type { GovernanceOverview, GovernanceServiceContract, SampleState } from "./types.js";
 
 type Row = Record<string, unknown>;
@@ -9,6 +11,7 @@ const minimumCalibrationOutcomes = 30;
 const minimumDriftPredictions = 50;
 const requiredRetrainingOutcomes = 100;
 const attributionWindowDays = 30;
+const minimumDiagnosticItemResponses = 20;
 
 const number = (value: unknown): number => Number(value);
 const nullable = (value: unknown): number | null => value === null || value === undefined ? null : Number(value);
@@ -19,7 +22,11 @@ const state = (count: number, minimum: number): SampleState => count >= minimum 
 export function createGovernanceService(pool: Pool): GovernanceServiceContract {
   return {
     async getOverview(): Promise<GovernanceOverview> {
-      const [volumeResult, distributionResult, courseResult, calibrationResult, driftResult, coverageResult, modelResult] = await Promise.all([
+      const [
+        volumeResult, distributionResult, courseResult, calibrationResult, driftResult,
+        coverageResult, modelResult, diagnosticItemsResult, diagnosticSessionsResult,
+        diagnosticStopsResult, diagnosticEvidenceResult, diagnosticSelfReportsResult,
+      ] = await Promise.all([
         pool.query<Row>(
           `WITH shown AS (
              SELECT path.id
@@ -165,6 +172,90 @@ export function createGovernanceService(pool: Pool): GovernanceServiceContract {
           `SELECT model_version, feature_version, inference_version
            FROM personalized_paths ORDER BY generated_at DESC LIMIT 1`,
         ),
+        pool.query<Row>(
+          `WITH submitted_answers AS (
+             SELECT answer.question_id, answer.is_correct, answer.is_unsure,
+                    answer.response_seconds, answer.mastery_before, answer.mastery_after,
+                    answer.confidence_before, answer.confidence_after,
+                    SUM(CASE WHEN answer.is_correct THEN 1 ELSE 0 END)
+                      OVER (PARTITION BY answer.attempt_id) AS attempt_correct,
+                    COUNT(*) OVER (PARTITION BY answer.attempt_id) AS attempt_questions
+             FROM assessment_answers answer
+             JOIN assessment_attempts attempt ON attempt.id = answer.attempt_id
+             WHERE attempt.status = 'SUBMITTED'
+           )
+           SELECT question.id, question.slug, skill.name AS skill_name,
+                  question.difficulty, question.discrimination, question.cognitive_level,
+                  question.diagnostic_role, question.construct_code, question.content_version,
+                  question.calibration_state, question.expected_response_seconds,
+                  COUNT(answer.question_id)::int AS response_count,
+                  AVG(CASE WHEN answer.is_correct THEN 1.0 ELSE 0.0 END) AS correct_rate,
+                  AVG(CASE WHEN answer.is_unsure THEN 1.0 ELSE 0.0 END) AS unsure_rate,
+                  AVG(answer.response_seconds) AS mean_response_seconds,
+                  CORR(
+                    CASE WHEN answer.is_correct THEN 1.0 ELSE 0.0 END,
+                    CASE WHEN answer.attempt_questions > 1
+                      THEN (answer.attempt_correct - CASE WHEN answer.is_correct THEN 1 ELSE 0 END)::double precision
+                        / (answer.attempt_questions - 1)
+                    END
+                  ) AS empirical_discrimination,
+                  AVG(answer.mastery_after - answer.mastery_before)
+                    FILTER (WHERE answer.mastery_before IS NOT NULL AND answer.mastery_after IS NOT NULL)
+                    AS mean_mastery_change,
+                  AVG(answer.confidence_after - answer.confidence_before)
+                    FILTER (WHERE answer.confidence_before IS NOT NULL AND answer.confidence_after IS NOT NULL)
+                    AS mean_confidence_change
+           FROM questions question
+           JOIN skills skill ON skill.id = question.skill_id
+           LEFT JOIN submitted_answers answer ON answer.question_id = question.id
+           WHERE question.status = 'ACTIVE' AND question.question_purpose = 'DIAGNOSTIC'
+           GROUP BY question.id, skill.name
+           ORDER BY COUNT(answer.question_id) DESC, skill.name, question.slug`,
+        ),
+        pool.query<Row>(
+          `WITH submitted AS (
+             SELECT attempt.id, attempt.learner_id, attempt.question_count
+             FROM assessment_attempts attempt
+             JOIN assessments assessment ON assessment.id = attempt.assessment_id
+             WHERE attempt.status = 'SUBMITTED' AND assessment.assessment_type = 'DIAGNOSTIC'
+           )
+           SELECT COUNT(*)::int AS submitted_attempts,
+                  COUNT(DISTINCT learner_id)::int AS unique_learners,
+                  COALESCE(SUM(question_count), 0)::int AS total_responses,
+                  AVG(question_count) AS mean_questions,
+                  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY question_count) AS median_questions,
+                  PERCENTILE_CONT(0.9) WITHIN GROUP (ORDER BY question_count) AS p90_questions
+           FROM submitted`,
+        ),
+        pool.query<Row>(
+          `SELECT COALESCE(attempt.diagnostic_stopping_reason, 'SUBMITTED_COMPLETE') AS reason,
+                  COUNT(*)::int AS count
+           FROM assessment_attempts attempt
+           JOIN assessments assessment ON assessment.id = attempt.assessment_id
+           WHERE attempt.status = 'SUBMITTED' AND assessment.assessment_type = 'DIAGNOSTIC'
+           GROUP BY COALESCE(attempt.diagnostic_stopping_reason, 'SUBMITTED_COMPLETE')
+           ORDER BY COUNT(*) DESC, reason`,
+        ),
+        pool.query<Row>(
+          `SELECT result.diagnostic_classification AS classification,
+                  COUNT(*)::int AS count,
+                  COUNT(*) FILTER (
+                    WHERE result.correct_count > 0 AND result.correct_count < result.question_count
+                  )::int AS mixed_count,
+                  COUNT(*) FILTER (
+                    WHERE result.mastery_lower_bound IS NOT NULL AND result.mastery_upper_bound IS NOT NULL
+                  )::int AS interval_count
+           FROM assessment_skill_results result
+           JOIN assessment_attempts attempt ON attempt.id = result.attempt_id
+           WHERE attempt.status = 'SUBMITTED'
+           GROUP BY result.diagnostic_classification`,
+        ),
+        pool.query<Row>(
+          `SELECT (
+             (SELECT COUNT(*) FROM learner_skill_self_reports)
+             + (SELECT COUNT(*) FROM learner_module_self_reports)
+           )::int AS claim_count`,
+        ),
       ]);
 
       const volumeRow = volumeResult.rows[0]!;
@@ -202,8 +293,110 @@ export function createGovernanceService(pool: Pool): GovernanceServiceContract {
         !dataQualityPass ? "Outcome data-quality checks have not passed." : null,
         "A candidate model still requires offline comparison and human approval before promotion.",
       ].filter((reason): reason is string => Boolean(reason));
+      const diagnosticItems = diagnosticItemsResult.rows.map((row) => {
+        const responseCount = number(row.response_count);
+        const correctRate = nullable(row.correct_rate);
+        const unsureRate = nullable(row.unsure_rate);
+        const expectedResponseSeconds = nullable(row.expected_response_seconds);
+        const meanResponseSeconds = nullable(row.mean_response_seconds);
+        const item = describeDiagnosticItemCalibration({
+          configuredDifficulty: number(row.difficulty),
+          correctRate,
+          empiricalDiscrimination: nullable(row.empirical_discrimination),
+          expectedResponseSeconds,
+          meanResponseSeconds,
+          responseCount,
+          unsureRate,
+        }, minimumDiagnosticItemResponses);
+        return {
+          ...item,
+          authorCalibrationState: String(row.calibration_state) as "CALIBRATED" | "EXPERT_PRIOR" | "FIELD_TEST",
+          authorDiscrimination: number(row.discrimination),
+          cognitiveLevel: String(row.cognitive_level) as "ANALYZE" | "APPLY" | "REMEMBER" | "UNDERSTAND",
+          configuredDifficulty: number(row.difficulty),
+          constructCode: String(row.construct_code),
+          contentVersion: number(row.content_version),
+          correctRate,
+          diagnosticRole: String(row.diagnostic_role) as "ANCHOR" | "CHALLENGE" | "VERIFICATION",
+          expectedResponseSeconds,
+          id: String(row.id),
+          meanConfidenceChange: nullable(row.mean_confidence_change),
+          meanMasteryChange: nullable(row.mean_mastery_change),
+          meanResponseSeconds,
+          responseCount,
+          skillName: String(row.skill_name),
+          slug: String(row.slug),
+          unsureRate,
+        };
+      });
+      const reportableDiagnosticItems = diagnosticItems.filter((item) => item.sampleState === "REPORTABLE");
+      const empiricalDiscriminations = reportableDiagnosticItems
+        .map((item) => item.empiricalDiscrimination)
+        .filter((value): value is number => value !== null);
+      const calibrationErrors = reportableDiagnosticItems
+        .map((item) => item.absoluteCalibrationError)
+        .filter((value): value is number => value !== null);
+      const diagnosticSession = diagnosticSessionsResult.rows[0] ?? {};
+      const classificationCounts = Object.fromEntries(diagnosticEvidenceResult.rows.map((row) => [
+        String(row.classification), number(row.count),
+      ]));
+      const diagnosticSkillDecisions = diagnosticEvidenceResult.rows.reduce((total, row) => total + number(row.count), 0);
+      const mixedEvidenceSkills = diagnosticEvidenceResult.rows.reduce((total, row) => total + number(row.mixed_count), 0);
+      const confidenceIntervalsRecorded = diagnosticEvidenceResult.rows.reduce((total, row) => total + number(row.interval_count), 0);
 
       return {
+        diagnosticQuality: {
+          cohort: {
+            meanQuestions: nullable(diagnosticSession.mean_questions),
+            medianQuestions: nullable(diagnosticSession.median_questions),
+            p90Questions: nullable(diagnosticSession.p90_questions),
+            selfReportClaims: number(diagnosticSelfReportsResult.rows[0]?.claim_count ?? 0),
+            submittedAttempts: number(diagnosticSession.submitted_attempts ?? 0),
+            totalResponses: number(diagnosticSession.total_responses ?? 0),
+            uniqueLearners: number(diagnosticSession.unique_learners ?? 0),
+          },
+          evidence: {
+            classificationCounts,
+            confidenceIntervalsRecorded,
+            mixedEvidenceSkills,
+            skillDecisions: diagnosticSkillDecisions,
+          },
+          items: diagnosticItems,
+          minimumResponsesPerItem: minimumDiagnosticItemResponses,
+          policyVersion: diagnosticSelectionPolicyVersion,
+          stopReasons: diagnosticStopsResult.rows.map((row) => ({
+            count: number(row.count), reason: String(row.reason),
+          })),
+          studyReadiness: [
+            {
+              detail: "Self-portrait claims, adaptive selection, multiple observations, contradictions, uncertainty intervals, and decision-specific stopping are persisted and test-covered.",
+              key: "adaptive-engine", label: "Evidence-bounded diagnostic engine", status: "IMPLEMENTED",
+            },
+            {
+              detail: `Item difficulty, response time, uncertainty, discrimination, and author-prior error are collected. Empirical conclusions require ${minimumDiagnosticItemResponses} responses per item.`,
+              key: "item-calibration", label: "Empirical item calibration", status: reportableDiagnosticItems.length
+                ? "IMPLEMENTED" : "COLLECTING_DATA",
+            },
+            {
+              detail: "Reference-test accuracy and delayed retention validity require consented learners and an independent outcome measure; the application does not manufacture these results.",
+              key: "external-validity", label: "External diagnostic validity", status: "REQUIRES_STUDY",
+            },
+            {
+              detail: "No sensitive demographic attributes are collected. Subgroup fairness reporting requires an approved study design, consent, and minimum cohort sizes.",
+              key: "fairness", label: "Subgroup fairness audit", status: "REQUIRES_STUDY",
+            },
+          ],
+          summary: {
+            activeItems: diagnosticItems.length,
+            flaggedReportableItems: reportableDiagnosticItems.filter((item) => item.warnings.length > 0).length,
+            meanAbsoluteCalibrationError: calibrationErrors.length
+              ? round(calibrationErrors.reduce((total, value) => total + value, 0) / calibrationErrors.length) : null,
+            meanEmpiricalDiscrimination: empiricalDiscriminations.length
+              ? round(empiricalDiscriminations.reduce((total, value) => total + value, 0) / empiricalDiscriminations.length) : null,
+            observedItems: diagnosticItems.filter((item) => item.responseCount > 0).length,
+            reportableItems: reportableDiagnosticItems.length,
+          },
+        },
         calibration: {
           bins,
           message: calibrationState === "REPORTABLE"

@@ -1,6 +1,65 @@
 export type SampleState = "INSUFFICIENT_DATA" | "REPORTABLE";
 
 export interface GovernanceOverview {
+  diagnosticQuality: {
+    cohort: {
+      meanQuestions: number | null;
+      medianQuestions: number | null;
+      p90Questions: number | null;
+      selfReportClaims: number;
+      submittedAttempts: number;
+      totalResponses: number;
+      uniqueLearners: number;
+    };
+    evidence: {
+      classificationCounts: Record<string, number>;
+      confidenceIntervalsRecorded: number;
+      mixedEvidenceSkills: number;
+      skillDecisions: number;
+    };
+    items: Array<{
+      absoluteCalibrationError: number | null;
+      authorCalibrationState: "CALIBRATED" | "EXPERT_PRIOR" | "FIELD_TEST";
+      authorDiscrimination: number;
+      authorExpectedCorrectRate: number;
+      cognitiveLevel: "ANALYZE" | "APPLY" | "REMEMBER" | "UNDERSTAND";
+      configuredDifficulty: number;
+      constructCode: string;
+      contentVersion: number;
+      correctRate: number | null;
+      diagnosticRole: "ANCHOR" | "CHALLENGE" | "VERIFICATION";
+      difficultyEstimate: number | null;
+      empiricalDiscrimination: number | null;
+      expectedResponseSeconds: number | null;
+      id: string;
+      meanConfidenceChange: number | null;
+      meanMasteryChange: number | null;
+      meanResponseSeconds: number | null;
+      responseCount: number;
+      sampleState: "UNOBSERVED" | "FIELD_TEST" | "REPORTABLE";
+      skillName: string;
+      slug: string;
+      unsureRate: number | null;
+      warnings: string[];
+    }>;
+    minimumResponsesPerItem: number;
+    policyVersion: string;
+    stopReasons: Array<{ count: number; reason: string }>;
+    studyReadiness: Array<{
+      detail: string;
+      key: string;
+      label: string;
+      status: "COLLECTING_DATA" | "IMPLEMENTED" | "REQUIRES_STUDY";
+    }>;
+    summary: {
+      activeItems: number;
+      flaggedReportableItems: number;
+      meanAbsoluteCalibrationError: number | null;
+      meanEmpiricalDiscrimination: number | null;
+      observedItems: number;
+      reportableItems: number;
+    };
+  };
   calibration: {
     bins: Array<{ beneficialOutcomeRate: number; count: number; meanPrediction: number }>;
     message: string;
