@@ -1,0 +1,1362 @@
+{
+  "classification": "APPLICATION CURRICULUM / NO LEARNER DATA",
+  "schemaVersion": "curriculum-v1",
+  "source": "LearnPath PostgreSQL active curriculum tables",
+  "summary": {
+    "courses": 4,
+    "prerequisiteEdges": 86,
+    "skills": 36
+  },
+  "courses": [
+    {
+      "estimatedHours": 42,
+      "id": "40000000-0000-4000-8000-000000000003",
+      "level": "ADVANCED",
+      "name": "Algorithms",
+      "skillIds": [
+        "30000000-0000-4000-8000-000000000022",
+        "30000000-0000-4000-8000-000000000023",
+        "30000000-0000-4000-8000-000000000024",
+        "30000000-0000-4000-8000-000000000025",
+        "30000000-0000-4000-8000-000000000026",
+        "30000000-0000-4000-8000-000000000027",
+        "30000000-0000-4000-8000-000000000028",
+        "30000000-0000-4000-8000-000000000029",
+        "30000000-0000-4000-8000-000000000030",
+        "30000000-0000-4000-8000-000000000031",
+        "30000000-0000-4000-8000-000000000032",
+        "30000000-0000-4000-8000-000000000033",
+        "30000000-0000-4000-8000-000000000034",
+        "30000000-0000-4000-8000-000000000035",
+        "30000000-0000-4000-8000-000000000036"
+      ],
+      "slug": "algorithms"
+    },
+    {
+      "estimatedHours": 28,
+      "id": "40000000-0000-4000-8000-000000000002",
+      "level": "INTERMEDIATE",
+      "name": "Data Structures",
+      "skillIds": [
+        "30000000-0000-4000-8000-000000000013",
+        "30000000-0000-4000-8000-000000000014",
+        "30000000-0000-4000-8000-000000000015",
+        "30000000-0000-4000-8000-000000000016",
+        "30000000-0000-4000-8000-000000000017",
+        "30000000-0000-4000-8000-000000000018",
+        "30000000-0000-4000-8000-000000000019",
+        "30000000-0000-4000-8000-000000000020",
+        "30000000-0000-4000-8000-000000000021",
+        "30000000-0000-4000-8000-000000000005",
+        "30000000-0000-4000-8000-000000000009"
+      ],
+      "slug": "data-structures"
+    },
+    {
+      "estimatedHours": 30,
+      "id": "40000000-0000-4000-8000-000000000004",
+      "level": "INTERMEDIATE",
+      "name": "Interview Problem Patterns",
+      "skillIds": [
+        "30000000-0000-4000-8000-000000000005",
+        "30000000-0000-4000-8000-000000000006",
+        "30000000-0000-4000-8000-000000000007",
+        "30000000-0000-4000-8000-000000000008",
+        "30000000-0000-4000-8000-000000000016",
+        "30000000-0000-4000-8000-000000000010",
+        "30000000-0000-4000-8000-000000000018",
+        "30000000-0000-4000-8000-000000000019",
+        "30000000-0000-4000-8000-000000000023",
+        "30000000-0000-4000-8000-000000000029",
+        "30000000-0000-4000-8000-000000000031",
+        "30000000-0000-4000-8000-000000000035",
+        "30000000-0000-4000-8000-000000000036"
+      ],
+      "slug": "interview-patterns"
+    },
+    {
+      "estimatedHours": 18,
+      "id": "40000000-0000-4000-8000-000000000001",
+      "level": "BEGINNER",
+      "name": "Programming Fundamentals",
+      "skillIds": [
+        "30000000-0000-4000-8000-000000000001",
+        "30000000-0000-4000-8000-000000000002",
+        "30000000-0000-4000-8000-000000000003",
+        "30000000-0000-4000-8000-000000000004",
+        "30000000-0000-4000-8000-000000000005",
+        "30000000-0000-4000-8000-000000000006",
+        "30000000-0000-4000-8000-000000000012",
+        "30000000-0000-4000-8000-000000000009",
+        "30000000-0000-4000-8000-000000000011"
+      ],
+      "slug": "programming-fundamentals"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Arrays & Strings",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000001",
+        "40000000-0000-4000-8000-000000000002",
+        "40000000-0000-4000-8000-000000000004"
+      ],
+      "difficulty": 1,
+      "estimatedMinutes": 90,
+      "id": "30000000-0000-4000-8000-000000000005",
+      "name": "Arrays",
+      "slug": "arrays"
+    },
+    {
+      "category": "Recursion & Backtracking",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000004"
+      ],
+      "difficulty": 4,
+      "estimatedMinutes": 150,
+      "id": "30000000-0000-4000-8000-000000000010",
+      "name": "Backtracking",
+      "slug": "backtracking"
+    },
+    {
+      "category": "Sorting & Searching",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000003"
+      ],
+      "difficulty": 2,
+      "estimatedMinutes": 90,
+      "id": "30000000-0000-4000-8000-000000000024",
+      "name": "Basic Sorting",
+      "slug": "basic-sorting"
+    },
+    {
+      "category": "Sorting & Searching",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000003",
+        "40000000-0000-4000-8000-000000000004"
+      ],
+      "difficulty": 3,
+      "estimatedMinutes": 120,
+      "id": "30000000-0000-4000-8000-000000000023",
+      "name": "Binary Search",
+      "slug": "binary-search"
+    },
+    {
+      "category": "Trees",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000002",
+        "40000000-0000-4000-8000-000000000004"
+      ],
+      "difficulty": 3,
+      "estimatedMinutes": 120,
+      "id": "30000000-0000-4000-8000-000000000019",
+      "name": "Binary Search Trees",
+      "slug": "binary-search-trees"
+    },
+    {
+      "category": "Trees",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000002"
+      ],
+      "difficulty": 3,
+      "estimatedMinutes": 120,
+      "id": "30000000-0000-4000-8000-000000000017",
+      "name": "Binary Trees",
+      "slug": "binary-trees"
+    },
+    {
+      "category": "Recursion & Backtracking",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000001"
+      ],
+      "difficulty": 3,
+      "estimatedMinutes": 105,
+      "id": "30000000-0000-4000-8000-000000000012",
+      "name": "Bit Manipulation",
+      "slug": "bit-manipulation"
+    },
+    {
+      "category": "Graphs",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000003"
+      ],
+      "difficulty": 3,
+      "estimatedMinutes": 120,
+      "id": "30000000-0000-4000-8000-000000000027",
+      "name": "Breadth-First Search",
+      "slug": "breadth-first-search"
+    },
+    {
+      "category": "Foundations",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000001"
+      ],
+      "difficulty": 2,
+      "estimatedMinutes": 90,
+      "id": "30000000-0000-4000-8000-000000000004",
+      "name": "Complexity Analysis",
+      "slug": "complexity-analysis"
+    },
+    {
+      "category": "Foundations",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000001"
+      ],
+      "difficulty": 1,
+      "estimatedMinutes": 60,
+      "id": "30000000-0000-4000-8000-000000000002",
+      "name": "Control Flow",
+      "slug": "control-flow"
+    },
+    {
+      "category": "Graphs",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000003"
+      ],
+      "difficulty": 3,
+      "estimatedMinutes": 120,
+      "id": "30000000-0000-4000-8000-000000000028",
+      "name": "Depth-First Search",
+      "slug": "depth-first-search"
+    },
+    {
+      "category": "Recursion & Backtracking",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000001"
+      ],
+      "difficulty": 3,
+      "estimatedMinutes": 120,
+      "id": "30000000-0000-4000-8000-000000000011",
+      "name": "Divide and Conquer",
+      "slug": "divide-and-conquer"
+    },
+    {
+      "category": "Dynamic Programming",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000003"
+      ],
+      "difficulty": 4,
+      "estimatedMinutes": 150,
+      "id": "30000000-0000-4000-8000-000000000032",
+      "name": "Dynamic Programming Foundations",
+      "slug": "dynamic-programming-foundations"
+    },
+    {
+      "category": "Sorting & Searching",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000003"
+      ],
+      "difficulty": 3,
+      "estimatedMinutes": 135,
+      "id": "30000000-0000-4000-8000-000000000025",
+      "name": "Efficient Sorting",
+      "slug": "efficient-sorting"
+    },
+    {
+      "category": "Foundations",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000001"
+      ],
+      "difficulty": 1,
+      "estimatedMinutes": 60,
+      "id": "30000000-0000-4000-8000-000000000003",
+      "name": "Functions",
+      "slug": "functions"
+    },
+    {
+      "category": "Graphs",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000003"
+      ],
+      "difficulty": 3,
+      "estimatedMinutes": 120,
+      "id": "30000000-0000-4000-8000-000000000026",
+      "name": "Graph Fundamentals",
+      "slug": "graph-fundamentals"
+    },
+    {
+      "category": "Linear Structures",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000002",
+        "40000000-0000-4000-8000-000000000004"
+      ],
+      "difficulty": 2,
+      "estimatedMinutes": 105,
+      "id": "30000000-0000-4000-8000-000000000016",
+      "name": "Hashing",
+      "slug": "hashing"
+    },
+    {
+      "category": "Trees",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000002"
+      ],
+      "difficulty": 3,
+      "estimatedMinutes": 120,
+      "id": "30000000-0000-4000-8000-000000000020",
+      "name": "Heaps",
+      "slug": "heaps"
+    },
+    {
+      "category": "Dynamic Programming",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000003",
+        "40000000-0000-4000-8000-000000000004"
+      ],
+      "difficulty": 5,
+      "estimatedMinutes": 180,
+      "id": "30000000-0000-4000-8000-000000000035",
+      "name": "Knapsack Patterns",
+      "slug": "knapsack-patterns"
+    },
+    {
+      "category": "Sorting & Searching",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000003"
+      ],
+      "difficulty": 1,
+      "estimatedMinutes": 45,
+      "id": "30000000-0000-4000-8000-000000000022",
+      "name": "Linear Search",
+      "slug": "linear-search"
+    },
+    {
+      "category": "Linear Structures",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000002"
+      ],
+      "difficulty": 2,
+      "estimatedMinutes": 105,
+      "id": "30000000-0000-4000-8000-000000000013",
+      "name": "Linked Lists",
+      "slug": "linked-lists"
+    },
+    {
+      "category": "Dynamic Programming",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000003",
+        "40000000-0000-4000-8000-000000000004"
+      ],
+      "difficulty": 5,
+      "estimatedMinutes": 180,
+      "id": "30000000-0000-4000-8000-000000000036",
+      "name": "Longest Common Subsequence",
+      "slug": "longest-common-subsequence"
+    },
+    {
+      "category": "Dynamic Programming",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000003"
+      ],
+      "difficulty": 4,
+      "estimatedMinutes": 135,
+      "id": "30000000-0000-4000-8000-000000000033",
+      "name": "Memoization",
+      "slug": "memoization"
+    },
+    {
+      "category": "Graphs",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000003"
+      ],
+      "difficulty": 4,
+      "estimatedMinutes": 150,
+      "id": "30000000-0000-4000-8000-000000000030",
+      "name": "Minimum Spanning Trees",
+      "slug": "minimum-spanning-trees"
+    },
+    {
+      "category": "Foundations",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000001"
+      ],
+      "difficulty": 1,
+      "estimatedMinutes": 45,
+      "id": "30000000-0000-4000-8000-000000000001",
+      "name": "Programming Variables",
+      "slug": "programming-variables"
+    },
+    {
+      "category": "Linear Structures",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000002"
+      ],
+      "difficulty": 2,
+      "estimatedMinutes": 75,
+      "id": "30000000-0000-4000-8000-000000000015",
+      "name": "Queues",
+      "slug": "queues"
+    },
+    {
+      "category": "Recursion & Backtracking",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000001",
+        "40000000-0000-4000-8000-000000000002"
+      ],
+      "difficulty": 2,
+      "estimatedMinutes": 120,
+      "id": "30000000-0000-4000-8000-000000000009",
+      "name": "Recursion",
+      "slug": "recursion"
+    },
+    {
+      "category": "Graphs",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000003",
+        "40000000-0000-4000-8000-000000000004"
+      ],
+      "difficulty": 4,
+      "estimatedMinutes": 165,
+      "id": "30000000-0000-4000-8000-000000000029",
+      "name": "Shortest Paths",
+      "slug": "shortest-paths"
+    },
+    {
+      "category": "Arrays & Strings",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000004"
+      ],
+      "difficulty": 3,
+      "estimatedMinutes": 120,
+      "id": "30000000-0000-4000-8000-000000000008",
+      "name": "Sliding Window",
+      "slug": "sliding-window"
+    },
+    {
+      "category": "Linear Structures",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000002"
+      ],
+      "difficulty": 2,
+      "estimatedMinutes": 75,
+      "id": "30000000-0000-4000-8000-000000000014",
+      "name": "Stacks",
+      "slug": "stacks"
+    },
+    {
+      "category": "Arrays & Strings",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000001",
+        "40000000-0000-4000-8000-000000000004"
+      ],
+      "difficulty": 2,
+      "estimatedMinutes": 90,
+      "id": "30000000-0000-4000-8000-000000000006",
+      "name": "Strings",
+      "slug": "strings"
+    },
+    {
+      "category": "Dynamic Programming",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000003"
+      ],
+      "difficulty": 4,
+      "estimatedMinutes": 135,
+      "id": "30000000-0000-4000-8000-000000000034",
+      "name": "Tabulation",
+      "slug": "tabulation"
+    },
+    {
+      "category": "Graphs",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000003",
+        "40000000-0000-4000-8000-000000000004"
+      ],
+      "difficulty": 4,
+      "estimatedMinutes": 135,
+      "id": "30000000-0000-4000-8000-000000000031",
+      "name": "Topological Sorting",
+      "slug": "topological-sorting"
+    },
+    {
+      "category": "Trees",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000002",
+        "40000000-0000-4000-8000-000000000004"
+      ],
+      "difficulty": 3,
+      "estimatedMinutes": 120,
+      "id": "30000000-0000-4000-8000-000000000018",
+      "name": "Tree Traversal",
+      "slug": "tree-traversal"
+    },
+    {
+      "category": "Trees",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000002"
+      ],
+      "difficulty": 4,
+      "estimatedMinutes": 120,
+      "id": "30000000-0000-4000-8000-000000000021",
+      "name": "Tries",
+      "slug": "tries"
+    },
+    {
+      "category": "Arrays & Strings",
+      "courseIds": [
+        "40000000-0000-4000-8000-000000000004"
+      ],
+      "difficulty": 2,
+      "estimatedMinutes": 105,
+      "id": "30000000-0000-4000-8000-000000000007",
+      "name": "Two Pointers",
+      "slug": "two-pointers"
+    }
+  ],
+  "courseSkills": [
+    {
+      "courseId": "40000000-0000-4000-8000-000000000001",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 1,
+      "skillId": "30000000-0000-4000-8000-000000000001"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000001",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 2,
+      "skillId": "30000000-0000-4000-8000-000000000002"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000001",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 3,
+      "skillId": "30000000-0000-4000-8000-000000000003"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000001",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 4,
+      "skillId": "30000000-0000-4000-8000-000000000004"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000001",
+      "isRequired": true,
+      "moduleSequence": 2,
+      "sequence": 1,
+      "skillId": "30000000-0000-4000-8000-000000000005"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000001",
+      "isRequired": true,
+      "moduleSequence": 2,
+      "sequence": 2,
+      "skillId": "30000000-0000-4000-8000-000000000006"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000001",
+      "isRequired": false,
+      "moduleSequence": 2,
+      "sequence": 3,
+      "skillId": "30000000-0000-4000-8000-000000000012"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000001",
+      "isRequired": true,
+      "moduleSequence": 3,
+      "sequence": 1,
+      "skillId": "30000000-0000-4000-8000-000000000009"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000001",
+      "isRequired": true,
+      "moduleSequence": 3,
+      "sequence": 2,
+      "skillId": "30000000-0000-4000-8000-000000000011"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000002",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 1,
+      "skillId": "30000000-0000-4000-8000-000000000013"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000002",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 2,
+      "skillId": "30000000-0000-4000-8000-000000000014"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000002",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 3,
+      "skillId": "30000000-0000-4000-8000-000000000015"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000002",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 4,
+      "skillId": "30000000-0000-4000-8000-000000000016"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000002",
+      "isRequired": true,
+      "moduleSequence": 2,
+      "sequence": 1,
+      "skillId": "30000000-0000-4000-8000-000000000017"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000002",
+      "isRequired": true,
+      "moduleSequence": 2,
+      "sequence": 2,
+      "skillId": "30000000-0000-4000-8000-000000000018"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000002",
+      "isRequired": true,
+      "moduleSequence": 2,
+      "sequence": 3,
+      "skillId": "30000000-0000-4000-8000-000000000019"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000002",
+      "isRequired": true,
+      "moduleSequence": 2,
+      "sequence": 4,
+      "skillId": "30000000-0000-4000-8000-000000000020"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000002",
+      "isRequired": false,
+      "moduleSequence": 2,
+      "sequence": 5,
+      "skillId": "30000000-0000-4000-8000-000000000021"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000002",
+      "isRequired": true,
+      "moduleSequence": 3,
+      "sequence": 1,
+      "skillId": "30000000-0000-4000-8000-000000000005"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000002",
+      "isRequired": true,
+      "moduleSequence": 3,
+      "sequence": 2,
+      "skillId": "30000000-0000-4000-8000-000000000009"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000003",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 1,
+      "skillId": "30000000-0000-4000-8000-000000000022"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000003",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 2,
+      "skillId": "30000000-0000-4000-8000-000000000023"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000003",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 3,
+      "skillId": "30000000-0000-4000-8000-000000000024"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000003",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 4,
+      "skillId": "30000000-0000-4000-8000-000000000025"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000003",
+      "isRequired": true,
+      "moduleSequence": 2,
+      "sequence": 1,
+      "skillId": "30000000-0000-4000-8000-000000000026"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000003",
+      "isRequired": true,
+      "moduleSequence": 2,
+      "sequence": 2,
+      "skillId": "30000000-0000-4000-8000-000000000027"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000003",
+      "isRequired": true,
+      "moduleSequence": 2,
+      "sequence": 3,
+      "skillId": "30000000-0000-4000-8000-000000000028"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000003",
+      "isRequired": true,
+      "moduleSequence": 2,
+      "sequence": 4,
+      "skillId": "30000000-0000-4000-8000-000000000029"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000003",
+      "isRequired": true,
+      "moduleSequence": 2,
+      "sequence": 5,
+      "skillId": "30000000-0000-4000-8000-000000000030"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000003",
+      "isRequired": true,
+      "moduleSequence": 2,
+      "sequence": 6,
+      "skillId": "30000000-0000-4000-8000-000000000031"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000003",
+      "isRequired": true,
+      "moduleSequence": 3,
+      "sequence": 1,
+      "skillId": "30000000-0000-4000-8000-000000000032"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000003",
+      "isRequired": true,
+      "moduleSequence": 3,
+      "sequence": 2,
+      "skillId": "30000000-0000-4000-8000-000000000033"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000003",
+      "isRequired": true,
+      "moduleSequence": 3,
+      "sequence": 3,
+      "skillId": "30000000-0000-4000-8000-000000000034"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000003",
+      "isRequired": true,
+      "moduleSequence": 3,
+      "sequence": 4,
+      "skillId": "30000000-0000-4000-8000-000000000035"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000003",
+      "isRequired": true,
+      "moduleSequence": 3,
+      "sequence": 5,
+      "skillId": "30000000-0000-4000-8000-000000000036"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000004",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 1,
+      "skillId": "30000000-0000-4000-8000-000000000005"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000004",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 2,
+      "skillId": "30000000-0000-4000-8000-000000000006"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000004",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 3,
+      "skillId": "30000000-0000-4000-8000-000000000007"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000004",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 4,
+      "skillId": "30000000-0000-4000-8000-000000000008"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000004",
+      "isRequired": true,
+      "moduleSequence": 1,
+      "sequence": 5,
+      "skillId": "30000000-0000-4000-8000-000000000016"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000004",
+      "isRequired": true,
+      "moduleSequence": 2,
+      "sequence": 1,
+      "skillId": "30000000-0000-4000-8000-000000000010"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000004",
+      "isRequired": true,
+      "moduleSequence": 2,
+      "sequence": 2,
+      "skillId": "30000000-0000-4000-8000-000000000018"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000004",
+      "isRequired": true,
+      "moduleSequence": 2,
+      "sequence": 3,
+      "skillId": "30000000-0000-4000-8000-000000000019"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000004",
+      "isRequired": true,
+      "moduleSequence": 3,
+      "sequence": 1,
+      "skillId": "30000000-0000-4000-8000-000000000023"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000004",
+      "isRequired": true,
+      "moduleSequence": 3,
+      "sequence": 2,
+      "skillId": "30000000-0000-4000-8000-000000000029"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000004",
+      "isRequired": true,
+      "moduleSequence": 3,
+      "sequence": 3,
+      "skillId": "30000000-0000-4000-8000-000000000031"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000004",
+      "isRequired": true,
+      "moduleSequence": 3,
+      "sequence": 4,
+      "skillId": "30000000-0000-4000-8000-000000000035"
+    },
+    {
+      "courseId": "40000000-0000-4000-8000-000000000004",
+      "isRequired": true,
+      "moduleSequence": 3,
+      "sequence": 5,
+      "skillId": "30000000-0000-4000-8000-000000000036"
+    }
+  ],
+  "prerequisites": [
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000001",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000002"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000001",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000003"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000002",
+      "relationshipType": "RECOMMENDED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000003"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000002",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000004"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000003",
+      "relationshipType": "RECOMMENDED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000004"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000002",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000005"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000003",
+      "relationshipType": "RECOMMENDED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000005"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000003",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000006"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000005",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000006"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000004",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000007"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000005",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000007"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000006",
+      "relationshipType": "RECOMMENDED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000007"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000004",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000008"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000005",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000008"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000007",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000008"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000002",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000009"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000003",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000009"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000004",
+      "relationshipType": "RECOMMENDED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000010"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000005",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000010"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000009",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.75,
+      "skillId": "30000000-0000-4000-8000-000000000010"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000004",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000011"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000009",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000011"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000001",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000012"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000002",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000012"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000003",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000013"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000004",
+      "relationshipType": "RECOMMENDED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000013"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000005",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000014"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000013",
+      "relationshipType": "RECOMMENDED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000014"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000005",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000015"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000013",
+      "relationshipType": "RECOMMENDED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000015"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000004",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000016"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000005",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000016"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000006",
+      "relationshipType": "RECOMMENDED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000016"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000009",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000017"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000013",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000017"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000009",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000018"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000015",
+      "relationshipType": "RECOMMENDED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000018"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000017",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000018"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000017",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000019"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000018",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000019"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000005",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000020"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000017",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000020"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000006",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000021"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000017",
+      "relationshipType": "RECOMMENDED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000021"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000004",
+      "relationshipType": "RECOMMENDED",
+      "requiredMastery": 0.55,
+      "skillId": "30000000-0000-4000-8000-000000000022"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000005",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000022"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000004",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000023"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000005",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000023"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000011",
+      "relationshipType": "RECOMMENDED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000023"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000004",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000024"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000005",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000024"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000004",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000025"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000005",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000025"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000011",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000025"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000004",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000026"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000015",
+      "relationshipType": "RECOMMENDED",
+      "requiredMastery": 0.6,
+      "skillId": "30000000-0000-4000-8000-000000000026"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000016",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000026"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000015",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000027"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000016",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000027"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000026",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000027"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000009",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000028"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000014",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000028"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000026",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000028"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000020",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000029"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000026",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.75,
+      "skillId": "30000000-0000-4000-8000-000000000029"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000027",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000029"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000020",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000030"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000025",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000030"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000026",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.75,
+      "skillId": "30000000-0000-4000-8000-000000000030"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000015",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000031"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000026",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.75,
+      "skillId": "30000000-0000-4000-8000-000000000031"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000028",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000031"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000004",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000032"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000005",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000032"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000009",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.75,
+      "skillId": "30000000-0000-4000-8000-000000000032"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000009",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.75,
+      "skillId": "30000000-0000-4000-8000-000000000033"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000016",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.65,
+      "skillId": "30000000-0000-4000-8000-000000000033"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000032",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000033"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000005",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000034"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000032",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000034"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000004",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.7,
+      "skillId": "30000000-0000-4000-8000-000000000035"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000033",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.75,
+      "skillId": "30000000-0000-4000-8000-000000000035"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000034",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.75,
+      "skillId": "30000000-0000-4000-8000-000000000035"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000006",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.75,
+      "skillId": "30000000-0000-4000-8000-000000000036"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000033",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.75,
+      "skillId": "30000000-0000-4000-8000-000000000036"
+    },
+    {
+      "prerequisiteSkillId": "30000000-0000-4000-8000-000000000034",
+      "relationshipType": "REQUIRED",
+      "requiredMastery": 0.75,
+      "skillId": "30000000-0000-4000-8000-000000000036"
+    }
+  ]
+}

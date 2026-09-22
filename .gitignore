@@ -1,0 +1,32 @@
+node_modules/
+.npm-cache/
+.pip-cache/
+dist/
+coverage/
+.vite/
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.log
+*.tsbuildinfo
+.DS_Store
+
+# Local runtime and generated workspace artifacts
+.runtime/
+.runtime-postgres/
+.codex-finalizer/
+.codex-ppt-build/
+.chart-data-*/
+.fontconfig-cache/
+.pytest-*/
+tmp/
+output/
+docs/_*/
+
+# Reproducible ML training datasets (regenerate with the npm ML scripts)
+services/ml/data/features/*.csv
+services/ml/data/synthetic/*.csv

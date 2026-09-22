@@ -1,0 +1,172 @@
+{
+  "input": "C:\\Users\\suve\\Documents\\Codex\\2026-08-28\\build-x20\\outputs\\learnpath\\docs\\LearnPath_Reviewer_Explanation_Handbook.docx",
+  "fonts_by_char_count": {
+    "Aptos": 51170,
+    "Aptos Display": 3026,
+    "Cascadia Mono": 1410
+  },
+  "direct_run_formatting_runs": 926,
+  "direct_paragraph_formatting_paragraphs": 854,
+  "heading_like_paragraphs_not_heading_style": [
+    {
+      "para_index": 2,
+      "text": "LEARNPATH",
+      "style": "Normal"
+    },
+    {
+      "para_index": 3,
+      "text": "Reviewer Explanation Handbook",
+      "style": "Title"
+    },
+    {
+      "para_index": 8,
+      "text": "Prepared for final project review panel",
+      "style": "Normal"
+    },
+    {
+      "para_index": 368,
+      "text": "Use this handbook when",
+      "style": "Normal"
+    },
+    {
+      "para_index": 369,
+      "text": "What to read",
+      "style": "Normal"
+    },
+    {
+      "para_index": 380,
+      "text": "Section",
+      "style": "Normal"
+    },
+    {
+      "para_index": 381,
+      "text": "Purpose",
+      "style": "Normal"
+    },
+    {
+      "para_index": 406,
+      "text": "Layer",
+      "style": "Normal"
+    },
+    {
+      "para_index": 407,
+      "text": "Question it answers",
+      "style": "Normal"
+    },
+    {
+      "para_index": 418,
+      "text": "Point",
+      "style": "Normal"
+    },
+    {
+      "para_index": 419,
+      "text": "Technical statement",
+      "style": "Normal"
+    },
+    {
+      "para_index": 440,
+      "text": "Avoid saying",
+      "style": "Normal"
+    },
+    {
+      "para_index": 441,
+      "text": "Say this instead",
+      "style": "Normal"
+    },
+    {
+      "para_index": 454,
+      "text": "Question",
+      "style": "Normal"
+    },
+    {
+      "para_index": 455,
+      "text": "Answer produced by the system",
+      "style": "Normal"
+    },
+    {
+      "para_index": 472,
+      "text": "Layer",
+      "style": "Normal"
+    },
+    {
+      "para_index": 473,
+      "text": "What it owns",
+      "style": "Normal"
+    },
+    {
+      "para_index": 474,
+      "text": "Why this boundary is important",
+      "style": "Normal"
+    },
+    {
+      "para_index": 487,
+      "text": "Fact",
+      "style": "Normal"
+    },
+    {
+      "para_index": 488,
+      "text": "Owner",
+      "style": "Normal"
+    }
+  ],
+  "examples": {
+    "direct_paragraph_formatting": [
+      {
+        "para_index": 1,
+        "text": "",
+        "style": "Normal"
+      },
+      {
+        "para_index": 2,
+        "text": "LEARNPATH",
+        "style": "Normal"
+      },
+      {
+        "para_index": 3,
+        "text": "Reviewer Explanation Handbook",
+        "style": "Title"
+      },
+      {
+        "para_index": 4,
+        "text": "Technical and nontechnical explanations for presenting and defending the LearnPath project",
+        "style": "Normal"
+      },
+      {
+        "para_index": 5,
+        "text": "This handbook explains the completed LearnPath system in the language a reviewer can understand and at the technical dep",
+        "style": "Normal"
+      }
+    ],
+    "direct_run_formatting": [
+      {
+        "para_index": 2,
+        "run_text": "LEARNPATH",
+        "style": "Normal"
+      },
+      {
+        "para_index": 3,
+        "run_text": "Reviewer Explanation Handbook",
+        "style": "Title"
+      },
+      {
+        "para_index": 4,
+        "run_text": "Technical and nontechnical explanations for presenting and defending the LearnPa",
+        "style": "Normal"
+      },
+      {
+        "para_index": 5,
+        "run_text": "This handbook explains the completed LearnPath system in the language a reviewer",
+        "style": "Normal"
+      },
+      {
+        "para_index": 8,
+        "run_text": "Prepared for final project review panel",
+        "style": "Normal"
+      }
+    ]
+  },
+  "notes": [
+    "Direct formatting is not always wrong, but it often causes inconsistent output when templates change.",
+    "Heading-like paragraphs not using Heading styles can break TOC and accessibility."
+  ]
+}

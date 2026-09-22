@@ -1,0 +1,43 @@
+{
+  "name": "learnpath",
+  "version": "0.20.0",
+  "private": true,
+  "type": "module",
+  "description": "AI-based adaptive personalized learning path recommender",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "dev": "concurrently -n web,api -c cyan,green \"npm run dev --workspace @learnpath/web\" \"npm run dev --workspace @learnpath/api\"",
+    "dev:web": "npm run dev --workspace @learnpath/web",
+    "dev:api": "npm run dev --workspace @learnpath/api",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "db:migrate": "node scripts/migrate.ts",
+    "db:status": "node scripts/migrate.ts --status",
+    "demo:seed": "node scripts/seed-demo-profiles.ts",
+    "content:audit": "node scripts/audit-content-coverage.ts",
+    "content:check": "node scripts/audit-content-coverage.ts --strict && node scripts/audit-diagnostic-quality.ts --strict",
+    "content:diagnostic-check": "node scripts/audit-diagnostic-quality.ts --strict",
+    "smoke:assessment-snapshots": "node scripts/smoke-question-snapshots.mjs",
+    "smoke:progressive-diagnostic": "node scripts/smoke-mixed-assessment.mjs",
+    "ml:data:export": "node scripts/export-ml-curriculum.ts",
+    "ml:synthetic:generate": "cd services/ml && ..\\..\\.venv\\Scripts\\python.exe -m app.synthetic.generate --curriculum data/input/curriculum_v1.json --output-directory data/synthetic",
+    "ml:features:generate": "cd services/ml && ..\\..\\.venv\\Scripts\\python.exe -m app.features.generate --input data/synthetic/synthetic-interactions-v2.csv --curriculum data/input/curriculum_v1.json --output-directory data/features",
+    "ml:train:evaluate": "cd services/ml && ..\\..\\.venv\\Scripts\\python.exe -m app.training.train --features data/features/engineered-features-v2.csv --feature-manifest data/features/manifest.json --output-directory models/benefit-ranking-v2 --split-directory data/splits"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=10.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "dotenv": "^17.2.2",
+    "pg": "^8.16.3",
+    "typescript": "^5.9.2",
+    "@types/node": "^24.3.0",
+    "@types/pg": "^8.15.5"
+  }
+}

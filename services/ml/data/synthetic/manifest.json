@@ -1,0 +1,618 @@
+{
+  "benefitDefinition": {
+    "assessment_improvement_weight": 0.25,
+    "completion_weight": 0.25,
+    "formula": "mastery_gain_weight \u00d7 mastery_gain + completion_weight \u00d7 completion_rate + assessment_improvement_weight \u00d7 assessment_improvement + learner_feedback_weight \u00d7 learner_feedback",
+    "labelRule": "beneficial = benefit_score >= threshold",
+    "learner_feedback_weight": 0.1,
+    "mastery_gain_weight": 0.4,
+    "randomLabels": false,
+    "threshold": 0.27,
+    "version": "benefit-v1"
+  },
+  "classification": "SYNTHETIC / SIMULATED DATA",
+  "curriculum": {
+    "checksumSha256": "1699833ed8fd9a50e6bc1b533e554ae19eb2290c749d3023874d285bcc3eb46e",
+    "courseCount": 4,
+    "prerequisiteEdgeCount": 86,
+    "schemaVersion": "curriculum-v1",
+    "skillCount": 36,
+    "source": "LearnPath PostgreSQL active curriculum tables"
+  },
+  "dataset": {
+    "datasetVersion": "synthetic-interactions-v2",
+    "fileName": "synthetic-interactions-v2.csv",
+    "generatorVersion": "learner-skill-simulator-v2",
+    "interactionCount": 20000,
+    "learnerCount": 1000,
+    "randomSeed": 42,
+    "sha256": "777e15e72b4877c3cdf83edf7581d2e8e8ff9b654fede99efe0324b16ca780fc"
+  },
+  "distributions": {
+    "beneficial": {
+      "False": 12909,
+      "True": 7091
+    },
+    "candidateKind": {
+      "LEARN": 5886,
+      "REVISION": 11371,
+      "SUPPORTING_PREREQUISITE": 2743
+    },
+    "learnerLevel": {
+      "ADVANCED": 225,
+      "BEGINNER": 399,
+      "INTERMEDIATE": 376
+    },
+    "learningPace": {
+      "FAST": 458,
+      "SLOW": 542
+    },
+    "performanceConsistency": {
+      "CONSISTENT": 618,
+      "INCONSISTENT": 382
+    }
+  },
+  "modeledRelationships": {
+    "difficultyMismatchToMasteryGain": -0.442111,
+    "engagementToCompletion": 0.589098,
+    "engagementToMasteryGain": 0.239904,
+    "practiceToAssessmentImprovement": 0.201441,
+    "prerequisiteMasteryToPostAssessment": 0.430699
+  },
+  "noise": {
+    "difficultyMismatch": 6037,
+    "disengaged": 4207,
+    "guessing": 2690,
+    "inconsistentPerformance": 3939,
+    "skippedContent": 3578
+  },
+  "outcomes": {
+    "beneficialRate": 0.35455,
+    "meanAssessmentImprovement": 0.064035,
+    "meanBenefitScore": 0.220237,
+    "meanCompletionRate": 0.460709,
+    "meanMasteryGain": 0.07178
+  },
+  "phaseBoundary": {
+    "containsRealLearnerData": false,
+    "featureEngineeringImplemented": false,
+    "modelTrained": false,
+    "predictionAvailable": false
+  },
+  "sampleRows": [
+    {
+      "assessment_improvement": -0.05613,
+      "beneficial": false,
+      "benefit_score": 0.207608,
+      "candidate_kind": "LEARN",
+      "completed": false,
+      "completion_rate": 0.368769,
+      "course_id": "40000000-0000-4000-8000-000000000003",
+      "course_slug": "algorithms",
+      "current_confidence": 0.435991,
+      "current_mastery": 0.585673,
+      "dataset_version": "synthetic-interactions-v2",
+      "days_since_evidence": 30,
+      "difficulty_mismatch": -0.114651,
+      "disengaged": false,
+      "elapsed_days": 1,
+      "engagement": 0.267956,
+      "evidence_count": 4,
+      "expected_time_minutes": 150,
+      "feedback_rating": 3.519185,
+      "generator_version": "learner-skill-simulator-v2",
+      "guessing": true,
+      "inconsistent_performance": true,
+      "interaction_id": "sim-interaction-00000001",
+      "learner_ability": 0.864651,
+      "learner_archetype": "ADVANCED_FAST_INCONSISTENT",
+      "learner_feedback": 0.629796,
+      "learner_id": "sim-learner-000001",
+      "learner_interaction_index": 1,
+      "learner_level": "ADVANCED",
+      "learning_pace": "FAST",
+      "mastery_gain": 0.166171,
+      "minimum_prerequisite_mastery": 0.821387,
+      "performance_consistency": "INCONSISTENT",
+      "post_assessment": 0.816238,
+      "post_mastery": 0.751845,
+      "practice_attempts": 1,
+      "pre_assessment": 0.872368,
+      "prerequisite_mastery": 0.913796,
+      "prerequisite_readiness": 1.274946,
+      "random_seed": 42,
+      "required_prerequisite_count": 3,
+      "retention": 0.331063,
+      "satisfied_prerequisite_ratio": 1.0,
+      "simulation_day": 1,
+      "skill_category": "Dynamic Programming",
+      "skill_difficulty": 4,
+      "skill_id": "30000000-0000-4000-8000-000000000032",
+      "skill_slug": "dynamic-programming-foundations",
+      "skipped_content": false,
+      "synthetic_classification": "SYNTHETIC / SIMULATED DATA",
+      "time_spent_minutes": 55.672348
+    },
+    {
+      "assessment_improvement": 0.317031,
+      "beneficial": false,
+      "benefit_score": 0.245323,
+      "candidate_kind": "REVISION",
+      "completed": false,
+      "completion_rate": 0.251636,
+      "course_id": "40000000-0000-4000-8000-000000000003",
+      "course_slug": "algorithms",
+      "current_confidence": 0.178068,
+      "current_mastery": 0.778317,
+      "dataset_version": "synthetic-interactions-v2",
+      "days_since_evidence": 16,
+      "difficulty_mismatch": -0.114651,
+      "disengaged": false,
+      "elapsed_days": 3,
+      "engagement": 0.251418,
+      "evidence_count": 1,
+      "expected_time_minutes": 150,
+      "feedback_rating": 3.909484,
+      "generator_version": "learner-skill-simulator-v2",
+      "guessing": false,
+      "inconsistent_performance": true,
+      "interaction_id": "sim-interaction-00000002",
+      "learner_ability": 0.864651,
+      "learner_archetype": "ADVANCED_FAST_INCONSISTENT",
+      "learner_feedback": 0.727371,
+      "learner_id": "sim-learner-000001",
+      "learner_interaction_index": 2,
+      "learner_level": "ADVANCED",
+      "learning_pace": "FAST",
+      "mastery_gain": 0.076049,
+      "minimum_prerequisite_mastery": 0.78864,
+      "performance_consistency": "INCONSISTENT",
+      "post_assessment": 0.963323,
+      "post_mastery": 0.854367,
+      "practice_attempts": 0,
+      "pre_assessment": 0.646292,
+      "prerequisite_mastery": 0.86906,
+      "prerequisite_readiness": 1.275077,
+      "random_seed": 42,
+      "required_prerequisite_count": 3,
+      "retention": 0.518237,
+      "satisfied_prerequisite_ratio": 1.0,
+      "simulation_day": 4,
+      "skill_category": "Graphs",
+      "skill_difficulty": 4,
+      "skill_id": "30000000-0000-4000-8000-000000000030",
+      "skill_slug": "minimum-spanning-trees",
+      "skipped_content": false,
+      "synthetic_classification": "SYNTHETIC / SIMULATED DATA",
+      "time_spent_minutes": 94.193852
+    },
+    {
+      "assessment_improvement": -0.171149,
+      "beneficial": false,
+      "benefit_score": -0.014268,
+      "candidate_kind": "REVISION",
+      "completed": false,
+      "completion_rate": 0.0,
+      "course_id": "40000000-0000-4000-8000-000000000001",
+      "course_slug": "programming-fundamentals",
+      "current_confidence": 0.156645,
+      "current_mastery": 0.821387,
+      "dataset_version": "synthetic-interactions-v2",
+      "days_since_evidence": 23,
+      "difficulty_mismatch": -0.614651,
+      "disengaged": false,
+      "elapsed_days": 2,
+      "engagement": 0.07895,
+      "evidence_count": 1,
+      "expected_time_minutes": 90,
+      "feedback_rating": 1.691382,
+      "generator_version": "learner-skill-simulator-v2",
+      "guessing": true,
+      "inconsistent_performance": true,
+      "interaction_id": "sim-interaction-00000003",
+      "learner_ability": 0.864651,
+      "learner_archetype": "ADVANCED_FAST_INCONSISTENT",
+      "learner_feedback": 0.172846,
+      "learner_id": "sim-learner-000001",
+      "learner_interaction_index": 3,
+      "learner_level": "ADVANCED",
+      "learning_pace": "FAST",
+      "mastery_gain": 0.028086,
+      "minimum_prerequisite_mastery": 0.879523,
+      "performance_consistency": "INCONSISTENT",
+      "post_assessment": 0.828851,
+      "post_mastery": 0.849473,
+      "practice_attempts": 0,
+      "pre_assessment": 1.0,
+      "prerequisite_mastery": 0.879523,
+      "prerequisite_readiness": 1.465872,
+      "random_seed": 42,
+      "required_prerequisite_count": 1,
+      "retention": 0.451846,
+      "satisfied_prerequisite_ratio": 1.0,
+      "simulation_day": 6,
+      "skill_category": "Foundations",
+      "skill_difficulty": 2,
+      "skill_id": "30000000-0000-4000-8000-000000000004",
+      "skill_slug": "complexity-analysis",
+      "skipped_content": true,
+      "synthetic_classification": "SYNTHETIC / SIMULATED DATA",
+      "time_spent_minutes": 7.335312
+    },
+    {
+      "assessment_improvement": 0.307856,
+      "beneficial": false,
+      "benefit_score": 0.097099,
+      "candidate_kind": "REVISION",
+      "completed": false,
+      "completion_rate": 0.0,
+      "course_id": "40000000-0000-4000-8000-000000000003",
+      "course_slug": "algorithms",
+      "current_confidence": 0.816726,
+      "current_mastery": 0.817609,
+      "dataset_version": "synthetic-interactions-v2",
+      "days_since_evidence": 31,
+      "difficulty_mismatch": -0.614651,
+      "disengaged": true,
+      "elapsed_days": 1,
+      "engagement": 0.154434,
+      "evidence_count": 9,
+      "expected_time_minutes": 105,
+      "feedback_rating": 2.244836,
+      "generator_version": "learner-skill-simulator-v2",
+      "guessing": false,
+      "inconsistent_performance": true,
+      "interaction_id": "sim-interaction-00000004",
+      "learner_ability": 0.864651,
+      "learner_archetype": "ADVANCED_FAST_INCONSISTENT",
+      "learner_feedback": 0.311209,
+      "learner_id": "sim-learner-000001",
+      "learner_interaction_index": 4,
+      "learner_level": "ADVANCED",
+      "learning_pace": "FAST",
+      "mastery_gain": -0.027464,
+      "minimum_prerequisite_mastery": 0.96,
+      "performance_consistency": "INCONSISTENT",
+      "post_assessment": 1.0,
+      "post_mastery": 0.790145,
+      "practice_attempts": 1,
+      "pre_assessment": 0.692144,
+      "prerequisite_mastery": 0.96,
+      "prerequisite_readiness": 1.476923,
+      "random_seed": 42,
+      "required_prerequisite_count": 1,
+      "retention": 0.525192,
+      "satisfied_prerequisite_ratio": 1.0,
+      "simulation_day": 7,
+      "skill_category": "Linear Structures",
+      "skill_difficulty": 2,
+      "skill_id": "30000000-0000-4000-8000-000000000013",
+      "skill_slug": "linked-lists",
+      "skipped_content": false,
+      "synthetic_classification": "SYNTHETIC / SIMULATED DATA",
+      "time_spent_minutes": 66.496181
+    },
+    {
+      "assessment_improvement": 0.057044,
+      "beneficial": false,
+      "benefit_score": 0.189217,
+      "candidate_kind": "REVISION",
+      "completed": false,
+      "completion_rate": 0.443383,
+      "course_id": "40000000-0000-4000-8000-000000000003",
+      "course_slug": "algorithms",
+      "current_confidence": 0.632213,
+      "current_mastery": 0.693196,
+      "dataset_version": "synthetic-interactions-v2",
+      "days_since_evidence": 25,
+      "difficulty_mismatch": -0.364651,
+      "disengaged": false,
+      "elapsed_days": 1,
+      "engagement": 0.427116,
+      "evidence_count": 7,
+      "expected_time_minutes": 120,
+      "feedback_rating": 3.799959,
+      "generator_version": "learner-skill-simulator-v2",
+      "guessing": true,
+      "inconsistent_performance": false,
+      "interaction_id": "sim-interaction-00000005",
+      "learner_ability": 0.864651,
+      "learner_archetype": "ADVANCED_FAST_INCONSISTENT",
+      "learner_feedback": 0.69999,
+      "learner_id": "sim-learner-000001",
+      "learner_interaction_index": 5,
+      "learner_level": "ADVANCED",
+      "learning_pace": "FAST",
+      "mastery_gain": -0.014721,
+      "minimum_prerequisite_mastery": 0.790145,
+      "performance_consistency": "INCONSISTENT",
+      "post_assessment": 0.700911,
+      "post_mastery": 0.678475,
+      "practice_attempts": 0,
+      "pre_assessment": 0.643867,
+      "prerequisite_mastery": 0.875073,
+      "prerequisite_readiness": 1.293518,
+      "random_seed": 42,
+      "required_prerequisite_count": 2,
+      "retention": 0.462994,
+      "satisfied_prerequisite_ratio": 1.0,
+      "simulation_day": 8,
+      "skill_category": "Trees",
+      "skill_difficulty": 3,
+      "skill_id": "30000000-0000-4000-8000-000000000017",
+      "skill_slug": "binary-trees",
+      "skipped_content": false,
+      "synthetic_classification": "SYNTHETIC / SIMULATED DATA",
+      "time_spent_minutes": 61.518123
+    },
+    {
+      "assessment_improvement": -0.262668,
+      "beneficial": false,
+      "benefit_score": 0.003531,
+      "candidate_kind": "REVISION",
+      "completed": false,
+      "completion_rate": 0.215963,
+      "course_id": "40000000-0000-4000-8000-000000000001",
+      "course_slug": "programming-fundamentals",
+      "current_confidence": 0.337606,
+      "current_mastery": 0.96,
+      "dataset_version": "synthetic-interactions-v2",
+      "days_since_evidence": 30,
+      "difficulty_mismatch": -0.864651,
+      "disengaged": false,
+      "elapsed_days": 3,
+      "engagement": 0.149585,
+      "evidence_count": 3,
+      "expected_time_minutes": 90,
+      "feedback_rating": 2.872093,
+      "generator_version": "learner-skill-simulator-v2",
+      "guessing": false,
+      "inconsistent_performance": false,
+      "interaction_id": "sim-interaction-00000006",
+      "learner_ability": 0.864651,
+      "learner_archetype": "ADVANCED_FAST_INCONSISTENT",
+      "learner_feedback": 0.468023,
+      "learner_id": "sim-learner-000001",
+      "learner_interaction_index": 6,
+      "learner_level": "ADVANCED",
+      "learning_pace": "FAST",
+      "mastery_gain": -0.078987,
+      "minimum_prerequisite_mastery": 0.879523,
+      "performance_consistency": "INCONSISTENT",
+      "post_assessment": 0.721152,
+      "post_mastery": 0.881013,
+      "practice_attempts": 1,
+      "pre_assessment": 0.98382,
+      "prerequisite_mastery": 0.879523,
+      "prerequisite_readiness": 1.465872,
+      "random_seed": 42,
+      "required_prerequisite_count": 1,
+      "retention": 0.513452,
+      "satisfied_prerequisite_ratio": 1.0,
+      "simulation_day": 11,
+      "skill_category": "Arrays & Strings",
+      "skill_difficulty": 1,
+      "skill_id": "30000000-0000-4000-8000-000000000005",
+      "skill_slug": "arrays",
+      "skipped_content": false,
+      "synthetic_classification": "SYNTHETIC / SIMULATED DATA",
+      "time_spent_minutes": 58.549573
+    }
+  ],
+  "schema": [
+    {
+      "name": "synthetic_classification",
+      "role": "PROVENANCE"
+    },
+    {
+      "name": "dataset_version",
+      "role": "PROVENANCE"
+    },
+    {
+      "name": "generator_version",
+      "role": "PROVENANCE"
+    },
+    {
+      "name": "random_seed",
+      "role": "PROVENANCE"
+    },
+    {
+      "name": "interaction_id",
+      "role": "SYNTHETIC_IDENTIFIER"
+    },
+    {
+      "name": "learner_id",
+      "role": "SYNTHETIC_IDENTIFIER"
+    },
+    {
+      "name": "learner_archetype",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "learner_level",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "learning_pace",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "performance_consistency",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "learner_ability",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "learner_interaction_index",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "simulation_day",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "elapsed_days",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "course_id",
+      "role": "CURRICULUM_CONTEXT"
+    },
+    {
+      "name": "course_slug",
+      "role": "CURRICULUM_CONTEXT"
+    },
+    {
+      "name": "skill_id",
+      "role": "CURRICULUM_CONTEXT"
+    },
+    {
+      "name": "skill_slug",
+      "role": "CURRICULUM_CONTEXT"
+    },
+    {
+      "name": "skill_category",
+      "role": "CURRICULUM_CONTEXT"
+    },
+    {
+      "name": "skill_difficulty",
+      "role": "CURRICULUM_CONTEXT"
+    },
+    {
+      "name": "candidate_kind",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "current_mastery",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "current_confidence",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "retention",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "days_since_evidence",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "evidence_count",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "required_prerequisite_count",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "satisfied_prerequisite_ratio",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "minimum_prerequisite_mastery",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "prerequisite_mastery",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "prerequisite_readiness",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "engagement",
+      "role": "SIMULATED_BEHAVIOR"
+    },
+    {
+      "name": "practice_attempts",
+      "role": "SIMULATED_BEHAVIOR"
+    },
+    {
+      "name": "time_spent_minutes",
+      "role": "SIMULATED_BEHAVIOR"
+    },
+    {
+      "name": "expected_time_minutes",
+      "role": "CURRICULUM_CONTEXT"
+    },
+    {
+      "name": "completion_rate",
+      "role": "SIMULATED_OUTCOME"
+    },
+    {
+      "name": "completed",
+      "role": "SIMULATED_OUTCOME"
+    },
+    {
+      "name": "guessing",
+      "role": "REALISTIC_NOISE"
+    },
+    {
+      "name": "disengaged",
+      "role": "REALISTIC_NOISE"
+    },
+    {
+      "name": "skipped_content",
+      "role": "REALISTIC_NOISE"
+    },
+    {
+      "name": "inconsistent_performance",
+      "role": "REALISTIC_NOISE"
+    },
+    {
+      "name": "difficulty_mismatch",
+      "role": "REALISTIC_NOISE"
+    },
+    {
+      "name": "pre_assessment",
+      "role": "SIMULATION_INPUT"
+    },
+    {
+      "name": "post_assessment",
+      "role": "SIMULATED_OUTCOME"
+    },
+    {
+      "name": "assessment_improvement",
+      "role": "SIMULATED_OUTCOME"
+    },
+    {
+      "name": "post_mastery",
+      "role": "SIMULATED_OUTCOME"
+    },
+    {
+      "name": "mastery_gain",
+      "role": "SIMULATED_OUTCOME"
+    },
+    {
+      "name": "feedback_rating",
+      "role": "SIMULATED_OUTCOME"
+    },
+    {
+      "name": "learner_feedback",
+      "role": "SIMULATED_OUTCOME"
+    },
+    {
+      "name": "benefit_score",
+      "role": "DETERMINISTIC_LABEL_INPUT"
+    },
+    {
+      "name": "beneficial",
+      "role": "DETERMINISTIC_LABEL"
+    }
+  ],
+  "validation": {
+    "acyclicCurriculum": true,
+    "benefitFormulaVerified": true,
+    "curriculumReferencesValid": true,
+    "finiteNumericValues": true,
+    "interactionCountRequirement": true,
+    "learnerCountRequirement": true,
+    "noDuplicateInteractionIds": true,
+    "syntheticLabelConsistent": true
+  }
+}
