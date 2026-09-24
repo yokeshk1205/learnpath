@@ -2,62 +2,37 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "LearnPath: Start database",
-      "type": "shell",
-      "command": "& 'C:\\Program Files\\PostgreSQL\\18\\bin\\pg_ctl.exe' status -D '${workspaceFolder}\\.runtime-postgres'; if ($LASTEXITCODE -ne 0) { & 'C:\\Program Files\\PostgreSQL\\18\\bin\\pg_ctl.exe' start -D '${workspaceFolder}\\.runtime-postgres' -l '${workspaceFolder}\\.runtime-postgres.stdout.log' -o '-p 55432' }",
-      "options": {
-        "shell": {
-          "executable": "powershell.exe",
-          "args": ["-NoProfile", "-Command"]
-        }
-      },
-      "problemMatcher": []
-    },
-    {
-      "label": "LearnPath: Web and API",
+      "label": "LearnPath: Configure local environment",
       "type": "npm",
-      "script": "dev",
-      "options": {
-        "cwd": "${workspaceFolder}",
-        "env": {
-          "NODE_ENV": "development",
-          "API_PORT": "4000",
-          "WEB_ORIGIN": "http://127.0.0.1:5173",
-          "DATABASE_URL": "postgresql://learnpath@127.0.0.1:55432/learnpath",
-          "DATABASE_SSL": "false",
-          "AUTH_ACCESS_TOKEN_SECRET": "learnpath-local-development-secret-key-2026",
-          "ML_SERVICE_URL": "http://127.0.0.1:8000"
-        }
-      },
+      "script": "setup:local",
       "problemMatcher": []
     },
     {
-      "label": "LearnPath: ML service",
-      "type": "shell",
-      "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
-      "args": [
-        "-m",
-        "uvicorn",
-        "app.main:app",
-        "--app-dir",
-        "services/ml",
-        "--reload",
-        "--port",
-        "8000"
-      ],
+      "label": "LearnPath: Install Python dependencies",
+      "type": "npm",
+      "script": "setup:python",
+      "problemMatcher": []
+    },
+    {
+      "label": "LearnPath: Run full stack",
+      "type": "npm",
+      "script": "dev:local",
       "options": {
         "cwd": "${workspaceFolder}"
       },
       "problemMatcher": []
     },
     {
-      "label": "LearnPath: Run full stack",
-      "dependsOrder": "parallel",
-      "dependsOn": [
-        "LearnPath: Start database",
-        "LearnPath: ML service",
-        "LearnPath: Web and API"
-      ],
+      "label": "LearnPath: Run database migrations",
+      "type": "npm",
+      "script": "db:migrate",
+      "problemMatcher": []
+    },
+    {
+      "label": "LearnPath: Start with Docker",
+      "type": "shell",
+      "command": "docker compose up --build",
+      "options": {"cwd": "${workspaceFolder}"},
       "problemMatcher": []
     }
   ]

@@ -1,14 +1,13 @@
 // Proves that an authored question edit cannot change an attempt already shown
 // to a learner. All fixture, author edits, answers, and results are rolled back.
-import 'dotenv/config';
+import { getDatabaseConfig } from '../config/database.mjs';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import pg from 'pg';
 import { createDiagnosticService } from '../apps/api/dist/diagnostics/service.js';
 import { createAssessmentProgramService } from '../apps/api/dist/assessment-programs/service.js';
 
-if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is required.');
-const client = new pg.Client({ connectionString: process.env.DATABASE_URL });
+const client = new pg.Client(getDatabaseConfig());
 await client.connect();
 await client.query('BEGIN');
 let pending = Promise.resolve();

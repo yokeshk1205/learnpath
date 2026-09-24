@@ -1,4 +1,5 @@
-import "dotenv/config";
+import { projectRoot } from "../config/environment.mjs";
+import { getDatabaseConfig } from "../config/database.mjs";
 
 import { createHash } from "node:crypto";
 import { readdir, readFile } from "node:fs/promises";
@@ -7,18 +8,9 @@ import path from "node:path";
 import pg from "pg";
 
 const { Client } = pg;
-const migrationsDirectory = path.resolve(process.cwd(), "database/migrations");
+const migrationsDirectory = path.resolve(projectRoot, "database/migrations");
 const isStatusOnly = process.argv.includes("--status");
-const connectionString = process.env.DATABASE_URL;
-
-if (!connectionString) {
-  throw new Error("DATABASE_URL is required. Copy .env.example to .env and configure PostgreSQL.");
-}
-
-const client = new Client({
-  connectionString,
-  ssl: process.env.DATABASE_SSL === "true" ? { rejectUnauthorized: true } : false,
-});
+const client = new Client(getDatabaseConfig());
 
 async function main() {
   await client.connect();
@@ -85,4 +77,3 @@ main()
   .finally(async () => {
     await client.end().catch(() => undefined);
   });
-

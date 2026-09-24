@@ -1,6 +1,6 @@
 // Exercises authored content and real inference without persisting test users,
 // answers, mastery, or paths. Requires migrations 0031/0032 and the ML service.
-import 'dotenv/config';
+import { getDatabaseConfig } from '../config/database.mjs';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import pg from 'pg';
@@ -16,8 +16,7 @@ import { createPathService } from '../apps/api/dist/paths/service.js';
 import { createLearningService } from '../apps/api/dist/learning/service.js';
 import { createPracticeService } from '../apps/api/dist/practice/service.js';
 
-if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is required.');
-const client = new pg.Client({ connectionString: process.env.DATABASE_URL });
+const client = new pg.Client(getDatabaseConfig());
 await client.connect();
 await client.query('BEGIN');
 let pending = Promise.resolve();

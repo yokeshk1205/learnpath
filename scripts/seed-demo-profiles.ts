@@ -1,11 +1,10 @@
-import "dotenv/config";
+import { getDatabaseConfig } from "../config/database.mjs";
 
 import pg from "pg";
 
 const { Client } = pg;
 
-const apiBaseUrl = process.env.DEMO_API_BASE_URL ?? "http://127.0.0.1:4000";
-const connectionString = process.env.DATABASE_URL;
+const apiBaseUrl = process.env.DEMO_API_BASE_URL ?? `http://127.0.0.1:${process.env.API_PORT ?? "4000"}`;
 const password = "LearnPathDemo!2026";
 
 const courses = {
@@ -91,9 +90,6 @@ interface LearningOverview {
   }>;
 }
 
-if (!connectionString) {
-  throw new Error("DATABASE_URL is required to reset only the five demo accounts safely.");
-}
 if (process.env.NODE_ENV === "production") {
   throw new Error("Demo profiles cannot be seeded while NODE_ENV=production.");
 }
@@ -319,7 +315,7 @@ async function ageEvidence(
 
 async function main(): Promise<void> {
   await api("/health/ready");
-  const client = new Client({ connectionString, ssl: false });
+  const client = new Client(getDatabaseConfig());
   await client.connect();
   try {
     await resetDemoAccounts(client);

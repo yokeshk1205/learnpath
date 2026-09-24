@@ -12,6 +12,11 @@
     "dev": "concurrently -n web,api -c cyan,green \"npm run dev --workspace @learnpath/web\" \"npm run dev --workspace @learnpath/api\"",
     "dev:web": "npm run dev --workspace @learnpath/web",
     "dev:api": "npm run dev --workspace @learnpath/api",
+    "dev:ml": "node scripts/run-python.mjs serve",
+    "dev:local": "npm run db:check && concurrently --kill-others -n web,api,ml -c cyan,green,yellow \"npm run dev:web\" \"npm run dev:api\" \"npm run dev:ml\"",
+    "setup:local": "node scripts/setup-local.mjs",
+    "setup:python": "node scripts/setup-python.mjs",
+    "db:check": "node scripts/check-database.mjs",
     "lint": "npm run lint --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
@@ -24,12 +29,13 @@
     "smoke:assessment-snapshots": "node scripts/smoke-question-snapshots.mjs",
     "smoke:progressive-diagnostic": "node scripts/smoke-mixed-assessment.mjs",
     "ml:data:export": "node scripts/export-ml-curriculum.ts",
-    "ml:synthetic:generate": "cd services/ml && ..\\..\\.venv\\Scripts\\python.exe -m app.synthetic.generate --curriculum data/input/curriculum_v1.json --output-directory data/synthetic",
-    "ml:features:generate": "cd services/ml && ..\\..\\.venv\\Scripts\\python.exe -m app.features.generate --input data/synthetic/synthetic-interactions-v2.csv --curriculum data/input/curriculum_v1.json --output-directory data/features",
-    "ml:train:evaluate": "cd services/ml && ..\\..\\.venv\\Scripts\\python.exe -m app.training.train --features data/features/engineered-features-v2.csv --feature-manifest data/features/manifest.json --output-directory models/benefit-ranking-v2 --split-directory data/splits"
+    "ml:synthetic:generate": "node scripts/run-python.mjs synthetic",
+    "ml:features:generate": "node scripts/run-python.mjs features",
+    "ml:train:evaluate": "node scripts/run-python.mjs train",
+    "test:ml": "node scripts/run-python.mjs test"
   },
   "engines": {
-    "node": ">=22.0.0",
+    "node": ">=22.18.0",
     "npm": ">=10.0.0"
   },
   "devDependencies": {

@@ -8,7 +8,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-learnpath}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-learnpath}
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     volumes:
       - learnpath-postgres:/var/lib/postgresql/data
     healthcheck:
@@ -32,7 +32,7 @@ services:
       AUTH_REFRESH_TOKEN_TTL_DAYS: ${AUTH_REFRESH_TOKEN_TTL_DAYS:-30}
       AUTH_REFRESH_COOKIE_NAME: ${AUTH_REFRESH_COOKIE_NAME:-learnpath_refresh}
     ports:
-      - "4000:4000"
+      - "127.0.0.1:4000:4000"
     depends_on:
       postgres:
         condition: service_healthy
@@ -48,7 +48,7 @@ services:
       FEATURE_DATA_DIRECTORY: /app/data/features
       EXPERIMENT_DIRECTORY: /app/models/benefit-ranking-v2
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
 
   web:
     build:
@@ -58,7 +58,7 @@ services:
       VITE_API_PROXY_TARGET: http://api:4000
       VITE_ML_PROXY_TARGET: http://ml:8000
     ports:
-      - "5173:5173"
+      - "127.0.0.1:5173:5173"
     depends_on:
       - api
       - ml

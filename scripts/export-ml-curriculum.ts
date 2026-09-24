@@ -1,4 +1,5 @@
-import "dotenv/config";
+import { projectRoot } from "../config/environment.mjs";
+import { getDatabaseConfig } from "../config/database.mjs";
 
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -6,15 +7,10 @@ import path from "node:path";
 import pg from "pg";
 
 const { Client } = pg;
-const connectionString = process.env.DATABASE_URL;
 const outputPath = path.resolve(
-  process.cwd(),
+  projectRoot,
   process.argv[2] ?? "services/ml/data/input/curriculum_v1.json",
 );
-
-if (!connectionString) {
-  throw new Error("DATABASE_URL is required to export the ML curriculum snapshot.");
-}
 
 interface CourseRow {
   estimated_hours: string;
@@ -49,10 +45,7 @@ interface SkillRow {
 }
 
 async function main() {
-  const client = new Client({
-    connectionString,
-    ssl: process.env.DATABASE_SSL === "true" ? { rejectUnauthorized: true } : false,
-  });
+  const client = new Client(getDatabaseConfig());
   await client.connect();
   try {
     const courseResult = await client.query<CourseRow>(

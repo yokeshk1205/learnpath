@@ -1,12 +1,9 @@
-import "dotenv/config";
+import { getDatabaseConfig } from "../config/database.mjs";
 
 import pg from "pg";
 
 const { Client } = pg;
-const connectionString = process.env.DATABASE_URL;
 const strict = process.argv.includes("--strict");
-
-if (!connectionString) throw new Error("DATABASE_URL is required for the read-only content audit.");
 
 interface CoverageRow {
   actionable: boolean;
@@ -22,7 +19,7 @@ interface CoverageRow {
   valid_lesson_count: number;
 }
 
-const client = new Client({ connectionString, ssl: false });
+const client = new Client(getDatabaseConfig());
 await client.connect();
 
 try {

@@ -29,38 +29,28 @@ services/
 
 ## Prerequisites
 
-- Node.js 22 or later and npm 10 or later
-- Python 3.11 or later
+- Node.js 22.18 or later and npm 10 or later
+- Python 3.11 or 3.12
 - PostgreSQL 16 or later
 - Docker with Compose (optional, for the containerized workflow)
 
-## Local setup
+## Local setup on Windows, macOS, and Linux
 
-1. Copy `.env.example` to `.env` and adjust values if needed.
-2. Install JavaScript dependencies with `npm install`.
-3. Create a Python virtual environment and install `services/ml/requirements-dev.txt`.
-4. Start PostgreSQL and create the configured database/user.
-5. Run `npm run db:migrate`.
-6. Start the API and web client with `npm run dev`.
-7. In another terminal, start the ML service:
+Install PostgreSQL 16+, Node.js 22.18+/npm 10+, and Python 3.11 or 3.12. Clone the repository, then from its root run `npm ci`, `npm run setup:local`, and `npm run setup:python`. Create a local PostgreSQL role/database, set `DATABASE_URL` in `.env` or `.env.local`, then run `npm run db:check`, `npm run db:migrate`, and `npm run dev:local`. The last command starts the web, API, and ML services together; open `http://localhost:5173`.
 
-   ```bash
-   python -m uvicorn app.main:app --app-dir services/ml --reload --port 8000
-   ```
+The default scripts use PostgreSQL on loopback port 5432; set the URL to match
+your own PostgreSQL host, port, database, and local login. `setup:local` preserves any
+existing `.env` and `.env.local`. See the cross-platform steps in the local setup guide.
 
-For the presentation-ready dataset, run `npm run demo:seed` after API, PostgreSQL, and ML are healthy.
-The login page then provides one-click access to five synthetic learner stories. Run `npm run content:check`
-to enforce complete lessons and purpose-distinct diagnostic/practice/assessment coverage for every
-recommendable skill.
+Detailed cross-platform PostgreSQL, VS Code, Docker-optional, and troubleshooting steps are in [docs/local-setup.md](docs/local-setup.md). No PostgreSQL installation directory or machine-specific data folder is required.
 
-Open `http://localhost:5173`. The web screen makes real liveness requests to both backend services.
+For the presentation-ready dataset, run `npm run demo:seed` after setup. The login page provides five synthetic learner stories. Run `npm run content:check` to audit course content.
 
 ### VS Code quick start
 
-Open this repository in VS Code, choose **Terminal → Run Task**, and run
-**LearnPath: Run full stack**. The checked-in workspace task starts the local PostgreSQL data directory,
-the web/API development processes, and the Python ML service. This task targets the Windows development
-environment used for this project (PostgreSQL 18 and the local `.venv`).
+Open this repository in VS Code and use **Terminal → Run Task**. The checked-in tasks configure local
+settings, install Python dependencies, run migrations, and start the full stack on any supported OS.
+PostgreSQL must already be running; setup instructions are in [docs/local-setup.md](docs/local-setup.md).
 
 To regenerate the Phase 12 source data, Phase 13 features, and Phase 14 experiment:
 
@@ -73,13 +63,25 @@ npm run ml:train:evaluate
 
 ## Containerized setup
 
+For the database container with the cross-platform host development servers, configure
+`DATABASE_URL` for `127.0.0.1:5432`, then run:
+
+```bash
+npm run setup:local
+docker compose up -d postgres
+npm run db:migrate
+npm run dev:local
+```
+
+For all four Docker services, first set `DATABASE_URL` to the published database URL and generate a
+strong `AUTH_ACCESS_TOKEN_SECRET`, then start the stack:
+
 ```bash
 docker compose up --build
 ```
 
-After PostgreSQL becomes healthy, apply migrations from the host with `npm run db:migrate` or from a
-one-off Node environment configured with the same `DATABASE_URL`. Automated migration execution will
-be introduced when deployment infrastructure is added.
+With containers running, apply pending migrations from a second host terminal with `npm run db:migrate`.
+The `.env` connection must use the same database and credentials as the running PostgreSQL container.
 
 ## Verification commands
 
@@ -88,7 +90,7 @@ npm run typecheck
 npm run lint
 npm test
 npm run build
-python -m pytest services/ml
+npm run test:ml
 ```
 
 With services running:
@@ -186,8 +188,9 @@ paths, regenerates stale paths, and records the explained coordinated recommenda
 | --- | --- | --- |
 | `API_PORT` | `4000` | Express listen port |
 | `WEB_ORIGIN` | `http://localhost:5173` | Allowed browser origin; both loopback forms are accepted outside production |
-| `DATABASE_URL` | local `learnpath` PostgreSQL URL | API and migration connection |
+| `DATABASE_URL` | Set in `.env` or `.env.local` | Local PostgreSQL URL for the API and database scripts |
 | `DATABASE_SSL` | `false` | Require verified PostgreSQL TLS when `true` |
+| `WEB_PORT` | `5173` | Local Vite web-server port |
 | `AUTH_ACCESS_TOKEN_SECRET` | none | Mandatory access-token signing secret, 32+ characters |
 | `AUTH_ACCESS_TOKEN_TTL_MINUTES` | `15` | Access-token lifetime |
 | `AUTH_REFRESH_TOKEN_TTL_DAYS` | `30` | Refresh-session lifetime |

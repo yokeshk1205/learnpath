@@ -1,14 +1,13 @@
 // Real PostgreSQL integration smoke. Every fixture and evidence write is rolled
 // back in finally; existing learner records are never reset or truncated.
-import 'dotenv/config';
+import { getDatabaseConfig } from '../config/database.mjs';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import pg from 'pg';
 import { createDiagnosticService } from '../apps/api/dist/diagnostics/service.js';
 import { createAssessmentProgramService } from '../apps/api/dist/assessment-programs/service.js';
 
-if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is required.');
-const client = new pg.Client({ connectionString: process.env.DATABASE_URL });
+const client = new pg.Client(getDatabaseConfig());
 await client.connect();
 await client.query('BEGIN');
 // Services run against one outer rollback-only transaction. This verifies SQL
